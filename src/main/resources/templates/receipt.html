@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Receipt</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+        .container {
+font-size:9pt;font-family: Arial, Helvetica, sans-serif;line-height: 1.3;
+        }
+
+        .header {
+            width: 100%;
+            float: left;
+            margin-bottom: 30px;
+        }
+
+        .headerDetails {
+            width: 100%;
+            clear: both;
+        }
+
+        .billSummary {
+            margin-top: 170px;
+            width: 100%;
+        }
+
+        .float-left {
+            float: left;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        .pending {
+            background-color: #e87f09;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .detailtable {
+            border: 2px solid #cdcdcd;
+        }
+
+        .detailtable th {
+            text-align: left;font-size:9pt;
+            background-color: #e0e0e0;
+            padding: 0px 10px;
+        }
+
+        .detailtable td {
+            text-align: right;font-size:8pt;
+            padding: 0px 10px;
+        }
+
+        .detailtable tr {
+            height: 25px;
+        }
+
+        .billTable {
+            width: 100%;
+            border: 2px solid #cdcdcd;
+            table-layout: fixed;
+        }
+
+        .billTable th {
+            background-color: #e0e0e0;font-size:9pt;
+        }
+
+        .billTable th,
+        .billTable td {
+            padding: 5px;
+        }
+
+        .billTable td {
+            padding: 8px 5px;font-size:8pt;
+        }
+
+        .termCondition {
+            clear: both;
+        }
+
+        .container {
+            margin: 50px 100px;
+        }
+
+        .header {
+            width: 100%;
+        }
+
+        /* .billSummary {
+            margin-top: 50px;
+        } */
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .billTable {
+            width: 100%;
+        }
+
+        .billTable th,
+        .billTable td {
+            padding: 8px 5px;
+        }
+
+        .noMargin {
+            margin: 0px;
+        }
+
+        .address {
+            width: 300px;
+            word-wrap: break-word;
+        }
+    </style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div class="text-center">
+					<h1 class="noMargin" style="margin-bottom: 2px;">Receipt</h1>
+					<h5 class="noMargin" th:text="${receiptAndInvoiceUtilDto.detailTable.invoiceAndReceiptGeneratedDate}">Tuesday 30/10/2018 10:17 AM</h5>
+				</div>
+			</div>
+			<br/>
+			<div class="headerDetails">
+				<div class="addressDetails float-left">
+					<span>
+						<b>Billed To: </b>
+					</span>
+					<br />
+					<b>
+						<span
+				th:text="${receiptAndInvoiceUtilDto.billToAddress.purchaserName}"></span>
+					</b>
+					<br />
+					<span
+				th:text="${receiptAndInvoiceUtilDto.billToAddress.emailAddress}"></span>
+					<br />
+					<span
+				th:text="${receiptAndInvoiceUtilDto.billToAddress.mobileNumber}"></span>
+					<br />
+					<span
+				th:text="${receiptAndInvoiceUtilDto.billToAddress.residentialAddress}"></span>
+					<br />
+				</div>
+			</div>
+			<div class="bookingDetails float-right">
+				<table class="detailtable" cellspacing="0">
+					<tr>
+						<th>Receipt No</th>
+						<td>
+							<b
+							th:text="${receiptAndInvoiceUtilDto.detailTable.invoiceAndReceiptNumber}"></b>
+						</td>
+					</tr>
+					<tr>
+						<th>Payment Date</th>
+						<td
+							th:text="${receiptAndInvoiceUtilDto.detailTable.invoiceAndReceiptGeneratedDate}"></td>
+					</tr>
+					<tr>
+						<th>Payment Term</th>
+						<td th:text="${receiptAndInvoiceUtilDto.detailTable.paymentTerm}"></td>
+					</tr>
+				</table>
+			</div>
+			<br/>
+			<div class="billSummary" th:utext="${receiptAndInvoiceUtilDto.billToAddress.thymeleafTabledata}"></div>
+			<div class="text-center">
+				<h5>Thanks for shopping with us</h5>
+			</div>
+		</div>
+			<!--main container-->
+		</body>
+	</html>

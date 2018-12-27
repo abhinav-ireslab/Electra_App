@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration>
+<log4j:configuration debug="false"
+	xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="SENDX_CONSOLE_APPENDER" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="SENDX_FILE_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="1024MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="File" value="${catalina.home}/logs/sendx_server.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] (%t) %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="com.ireslab" >
+		<level value="trace" />
+		<appender-ref ref="SENDX_CONSOLE_APPENDER" />
+		<appender-ref ref="SENDX_FILE_APPENDER" />
+	</logger>
+
+	<!-- Miscellaneous Logging Configuration -->
+
+	<logger name="org.springframework">
+		<level value="error" />
+		<appender-ref ref="SENDX_CONSOLE_APPENDER" />
+		<appender-ref ref="SENDX_FILE_APPENDER" />
+	</logger>
+
+	<logger name="org.hibernate">
+		<level value="error" />
+		<appender-ref ref="SENDX_CONSOLE_APPENDER" />
+		<appender-ref ref="SENDX_FILE_APPENDER" />
+	</logger>
+
+	<logger name="org.apache">
+		<level value="error" />
+		<appender-ref ref="SENDX_CONSOLE_APPENDER" />
+		<appender-ref ref="SENDX_FILE_APPENDER" />
+	</logger>
+
+</log4j:configuration>
+
+
+
+
