@@ -6,7 +6,7 @@
 	<groupId>com.ireslab</groupId>
 	<artifactId>electraapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>electraApp</name>
 	<description>SendX Server Component</description>
