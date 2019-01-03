@@ -24,9 +24,14 @@ pipeline {
        steps {
        sh 'docker login -u docker030303 -p Abhinav@123Ires'
        sh 'docker push docker030303/electraapp'
-	  
-	
      }
    }
+       stage('Docker run'){
+       agent any
+       steps {
+       sh 'docker run -p 192.168.1.29:8088:8088 -t docker030303/electraapp'
+
+     }
+   } 
  }
 }
